@@ -23,5 +23,13 @@ h1 {
     width: 100%;
     background: white;
     margin-bottom: 45px;
-    border: 1px solid green;
+}
+
+#progres {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    background: green;
+    width: 0%;
 }
