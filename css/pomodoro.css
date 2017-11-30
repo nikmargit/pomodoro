@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 
+body {
+    background: #df3232;
+    text-align: center;
+    margin: 0;
+    color: white;
+}
 h1 {
+    margin-top: 90px;
     font-family: "Indie Flower", cursive;
+    font-size: 50px;
     text-transform: uppercase;
+}
+
+#timer {
+    font-size: 80px;
+    font-family: "Indie Flower", cursive;
+}
+
+#bar {
+    height: 20px;
+    width: 100%;
+    background: white;
+    margin-bottom: 45px;
+    border: 1px solid green;
 }
