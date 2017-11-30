@@ -1,12 +1,14 @@
-function setUp() {
+(function setUp() {
     var start = document.getElementById("start");
     var stop = document.getElementById("stop");
     var msg = document.getElementById("msg");
+    var reset = document.getElementById("reset");
+    var timer = document.getElementById("timer");
     var timeFlag = true;
     var pauseFlag = false;
     var time = 15;
     var interval;
-    var timer = document.getElementById("timer");
+    setTimer(time);
 
     start.addEventListener("click", function() {
         if (pauseFlag) return;
@@ -19,6 +21,8 @@ function setUp() {
         pauseFlag = false;
     });
 
+    reset.addEventListener("click", resetPomodoro);
+
     function countdown() {
         if (time < 0 && timeFlag) {
             time = 5;
@@ -29,7 +33,10 @@ function setUp() {
             timeFlag = !timeFlag;
             msg.textContent = "Work Hard!";
         }
-
+        setTimer(time);
+        time--;
+    }
+    function setTimer(time) {
         var seconds = parseInt(time % 60);
         var minutes = parseInt(time / 60);
         if (minutes < 10) {
@@ -38,10 +45,14 @@ function setUp() {
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-
         timer.innerHTML = minutes + ":" + seconds;
-        time--;
     }
-}
-
-setUp();
+    function resetPomodoro() {
+        timeFlag = true;
+        pauseFlag = false;
+        time = 15;
+        clearInterval(interval);
+        setTimer(time);
+        msg.textContent = "Work Hard!";
+    }
+})();
