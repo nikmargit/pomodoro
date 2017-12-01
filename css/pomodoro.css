@@ -7,20 +7,22 @@ body {
     color: white;
 }
 h1 {
-    margin-top: 90px;
+    margin-top: 70px;
 }
 
 #timer {
-    font-size: 80px;
+    font-size: 130px;
     font-family: "Indie Flower", cursive;
+    text-shadow: 4px 4px 2px black;
 }
 
 #bar {
     height: 25px;
     width: 80%;
     background: white;
-    margin: 45px auto 45px auto;
+    margin: 5px auto 45px auto;
     border-radius: 15px;
+    border: 3px solid black;
 }
 
 #progres {
@@ -31,4 +33,5 @@ h1 {
     background: green;
     width: 0%;
     border-radius: 15px;
+    transition: 1s linear;
 }
