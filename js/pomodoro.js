@@ -39,7 +39,6 @@
             resetBar();
         }
         setTimer(time);
-        time--;
     }
     function setTimer() {
         var seconds = parseInt(time % 60);
@@ -52,6 +51,7 @@
         }
         timer.innerHTML = minutes + ":" + seconds;
         progresBar.style.width = (percentageCounter - time) * percentage + "%";
+        time--;
     }
 
     function resetBar() {
