@@ -16,6 +16,7 @@
     start.addEventListener("click", function() {
         if (pauseFlag) return;
         pauseFlag = true;
+        msg.textContent = "Work Hard!\uD83D\uDCAA";
         interval = setInterval(countdown, 1000);
     });
 
@@ -30,12 +31,12 @@
         if (time < 0 && timeFlag) {
             time = 5;
             timeFlag = !timeFlag;
-            msg.textContent = "Chill!";
+            msg.textContent = "Chill!\u270C";
             resetBar();
         } else if (time < 0 && !timeFlag) {
             time = 15;
             timeFlag = !timeFlag;
-            msg.textContent = "Work Hard!";
+            msg.textContent = "Work Hard!\uD83D\uDCAA";
             resetBar();
         }
         setTimer(time);
@@ -67,6 +68,6 @@
         resetBar();
         clearInterval(interval);
         setTimer(time);
-        msg.textContent = "Work Hard!";
+        msg.textContent = "Start working";
     }
 })();
