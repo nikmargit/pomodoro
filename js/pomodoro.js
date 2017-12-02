@@ -7,8 +7,10 @@
     var progresBar = document.getElementById("progres");
     var workTime = document.getElementById("custom-work-time");
     var pauseTime = document.getElementById("custom-pause-time");
+    var segmentDiv = document.getElementById("segments");
     var audio = new Audio("sound.wav");
     var interval, work, pause, percentage, percentageCounter;
+    var segments = 0;
     getInput();
     var time = work;
     var timeFlag = true;
@@ -30,6 +32,9 @@
 
     function countdown() {
         if (time < 0 && timeFlag) {
+            segments++;
+            segmentDiv.textContent =
+                "Number of consecutive work segments: " + segments;
             audio.play();
             time = pause;
             timeFlag = !timeFlag;
@@ -80,5 +85,7 @@
         setTimer(time);
         msg.textContent = "Start working";
         startBtn.disabled = false;
+        segments = 0;
+        segmentDiv.textContent = "Number of consecutive work segments: 0";
     }
 })();
