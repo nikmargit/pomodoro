@@ -17,9 +17,18 @@
   <div id="bar">
     <div id="progres"></div>
   </div>
-  <button id="start">Start</button>
-  <button id="stop">Stop</button>
-  <button id="reset">Reset</button>
+  <div id="startStop">
+    <button id="start">&#9654;</button>
+    <button id="stop">&#9209;</button>
+  </div>
+  <div id="inputTime">
+    <p>Set custom times:</p>
+    <input type="number" id="custom-work-time" name="custom-work-time" placeholder="T" value="25">
+    <input type="number" id="custom-pause-time" name="custom-pause-time" placeholder="P" value="5">
+    <button id="reset">&#8635;</button>
+  </div>
+
+
 
   <script src="js/pomodoro.js"></script>
 </body>

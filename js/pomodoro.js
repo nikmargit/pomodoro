@@ -6,7 +6,6 @@
     var timer = document.getElementById("timer");
     var progresBar = document.getElementById("progres");
     var timeFlag = true;
-    var pauseFlag = false;
     var time = 15;
     var percentage = 1 / time * 100;
     var percentageCounter = time;
@@ -14,15 +13,14 @@
     setTimer(time);
 
     start.addEventListener("click", function() {
-        if (pauseFlag) return;
-        pauseFlag = true;
+        start.disabled = true;
         msg.textContent = "Work Hard!\uD83D\uDCAA";
         interval = setInterval(countdown, 1000);
     });
 
     stop.addEventListener("click", function() {
         clearInterval(interval);
-        pauseFlag = false;
+        start.disabled = false;
     });
 
     reset.addEventListener("click", resetPomodoro);
@@ -69,5 +67,6 @@
         clearInterval(interval);
         setTimer(time);
         msg.textContent = "Start working";
+        start.disabled = false;
     }
 })();
