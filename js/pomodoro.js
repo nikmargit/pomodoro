@@ -1,44 +1,55 @@
 (function setUp() {
-    var start = document.getElementById("start");
-    var stop = document.getElementById("stop");
+    var startBtn = document.getElementById("start");
+    var pauseBtn = document.getElementById("pause");
     var msg = document.getElementById("msg");
-    var reset = document.getElementById("reset");
+    var resetBtn = document.getElementById("reset");
     var timer = document.getElementById("timer");
     var progresBar = document.getElementById("progres");
+    var workTime = document.getElementById("custom-work-time");
+    var pauseTime = document.getElementById("custom-pause-time");
+    var audio = new Audio("sound.wav");
+    var interval, work, pause, percentage, percentageCounter;
+    getInput();
+    var time = work;
     var timeFlag = true;
-    var time = 15;
-    var percentage = 1 / time * 100;
-    var percentageCounter = time;
-    var interval;
+    resetBar();
     setTimer(time);
 
-    start.addEventListener("click", function() {
-        start.disabled = true;
+    startBtn.addEventListener("click", function() {
+        startBtn.disabled = true;
         msg.textContent = "Work Hard!\uD83D\uDCAA";
         interval = setInterval(countdown, 1000);
     });
 
-    stop.addEventListener("click", function() {
+    pauseBtn.addEventListener("click", function() {
         clearInterval(interval);
-        start.disabled = false;
+        startBtn.disabled = false;
     });
 
-    reset.addEventListener("click", resetPomodoro);
+    resetBtn.addEventListener("click", resetPomodoro);
 
     function countdown() {
         if (time < 0 && timeFlag) {
-            time = 5;
+            audio.play();
+            time = pause;
             timeFlag = !timeFlag;
             msg.textContent = "Chill!\u270C";
             resetBar();
         } else if (time < 0 && !timeFlag) {
-            time = 15;
+            audio.play();
+            time = work;
             timeFlag = !timeFlag;
             msg.textContent = "Work Hard!\uD83D\uDCAA";
             resetBar();
         }
         setTimer(time);
     }
+
+    function getInput() {
+        work = Number(workTime.value) * 60;
+        pause = Number(pauseTime.value) * 60;
+    }
+
     function setTimer() {
         var seconds = parseInt(time % 60);
         var minutes = parseInt(time / 60);
@@ -62,11 +73,12 @@
     function resetPomodoro() {
         timeFlag = true;
         pauseFlag = false;
-        time = 15;
+        getInput();
+        time = work;
         resetBar();
         clearInterval(interval);
         setTimer(time);
         msg.textContent = "Start working";
-        start.disabled = false;
+        startBtn.disabled = false;
     }
 })();
