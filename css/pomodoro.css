@@ -43,9 +43,20 @@ button:focus {
 
 #segmentsDiv {
     position: absolute;
-    left: 40px;
-    top: 160px;
+    left: 190px;
+    top: 435px;
     font-size: 25px;
+    font-size: 60px;
+    border: 3px solid black;
+    border-radius: 55px;
+    width: 155px;
+    background: white;
+    color: black;
+}
+
+#segmentsDiv > p {
+    margin: 8px;
+    padding: 6px;
 }
 
 #msg {
@@ -95,4 +106,10 @@ button:focus {
 
 input[type="number"]::-webkit-inner-spin-button {
     opacity: 1;
+}
+
+#tomato-icon {
+    position: relative;
+    width: 55px;
+    top: 12px;
 }

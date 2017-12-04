@@ -6,19 +6,24 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/pomodoro.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
   <h1>
     <img src="img/logo.png" alt="logo" />
   </h1>
-  <div id="segmentsDiv">
-    <p id="segments">Number of consecutive work segments: 0</p>
-  </div>
+
   <div id="timer">22:22</div>
   <p id="msg">Start working</p>
   <div id="bar">
     <div id="progres"></div>
+  </div>
+  <div id="segmentsDiv">
+    <p>
+      <img src="img/tomato.png" alt="tomato icon" id="tomato-icon">
+      <span id="segments">0</span>
+    </p>
   </div>
   <div id="startStop">
     <button id="start">&#9654;</button>
@@ -28,7 +33,7 @@
     <p>Set custom times:</p>
     <input type="number" id="custom-work-time" name="custom-work-time" placeholder="T" value="25">
     <input type="number" id="custom-pause-time" name="custom-pause-time" placeholder="P" value="5">
-    <button id="reset">&#8635;</button>
+    <button id="reset">&#10140;</button>
   </div>
 
 

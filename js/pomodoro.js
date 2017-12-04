@@ -9,17 +9,16 @@
     var pauseTime = document.getElementById("custom-pause-time");
     var segmentDiv = document.getElementById("segments");
     var audio = new Audio("sound.wav");
-    var interval, work, pause, percentage, percentageCounter;
+    var interval, work, pause, percentage, percentageCounter, time;
     var segments = 0;
     getInput();
-    var time = work;
     var timeFlag = true;
     resetBar();
     setTimer(time);
 
     startBtn.addEventListener("click", function() {
         startBtn.disabled = true;
-        msg.textContent = "Work Hard!\uD83D\uDCAA";
+        msg.textContent = "Work!\uD83D\uDCAA";
         interval = setInterval(countdown, 1000);
     });
 
@@ -33,18 +32,22 @@
     function countdown() {
         if (time < 0 && timeFlag) {
             segments++;
-            segmentDiv.textContent =
-                "Number of consecutive work segments: " + segments;
+            segmentDiv.textContent = segments;
             audio.play();
             time = pause;
             timeFlag = !timeFlag;
             msg.textContent = "Chill!\u270C";
+            if (segments % 4 === 0) {
+                time = 900;
+                msg.textContent = "Time for a longer break!";
+            }
+
             resetBar();
         } else if (time < 0 && !timeFlag) {
             audio.play();
             time = work;
             timeFlag = !timeFlag;
-            msg.textContent = "Work Hard!\uD83D\uDCAA";
+            msg.textContent = "Work!\uD83D\uDCAA";
             resetBar();
         }
         setTimer(time);
@@ -53,6 +56,7 @@
     function getInput() {
         work = Number(workTime.value) * 60;
         pause = Number(pauseTime.value) * 60;
+        time = work;
     }
 
     function setTimer() {
@@ -86,6 +90,6 @@
         msg.textContent = "Start working";
         startBtn.disabled = false;
         segments = 0;
-        segmentDiv.textContent = "Number of consecutive work segments: 0";
+        segmentDiv.textContent = 0;
     }
 })();
