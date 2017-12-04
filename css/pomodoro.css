@@ -36,9 +36,11 @@ button:focus {
 
 #timer {
     font-size: 130px;
-
+    width: 265px;
+    margin: auto;
     text-shadow: 4px 4px 2px black;
     margin-bottom: 0px;
+    text-align: left;
 }
 
 #segmentsDiv {
