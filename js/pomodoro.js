@@ -1,18 +1,18 @@
 (function setUp() {
-    var startBtn = document.getElementById("start");
-    var pauseBtn = document.getElementById("pause");
-    var msg = document.getElementById("msg");
-    var resetBtn = document.getElementById("reset");
-    var timer = document.getElementById("timer");
-    var progresBar = document.getElementById("progres");
-    var workTime = document.getElementById("custom-work-time");
-    var pauseTime = document.getElementById("custom-pause-time");
-    var segmentDiv = document.getElementById("segments");
-    var audio = new Audio("sound.wav");
-    var interval, work, pause, percentage, percentageCounter, time;
-    var segments = 0;
+    const startBtn = document.getElementById("start");
+    const pauseBtn = document.getElementById("pause");
+    const msg = document.getElementById("msg");
+    const resetBtn = document.getElementById("reset");
+    const timer = document.getElementById("timer");
+    const progresBar = document.getElementById("progres");
+    const workTime = document.getElementById("custom-work-time");
+    const pauseTime = document.getElementById("custom-pause-time");
+    const segmentDiv = document.getElementById("segments");
+    const audio = new Audio("sound.wav");
+    let interval, work, pause, percentage, percentageCounter, time;
+    let segments = 0;
     getInput();
-    var timeFlag = true;
+    let timeFlag = true;
     resetBar();
     setTimer(time);
 
@@ -45,7 +45,6 @@
                 time = 900;
                 msg.textContent = "Time for a longer break!";
             }
-
             resetBar();
         } else if (time < 0 && !timeFlag) {
             audio.play();
@@ -64,14 +63,10 @@
     }
 
     function setTimer() {
-        var seconds = parseInt(time % 60);
-        var minutes = parseInt(time / 60);
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
+        let seconds = parseInt(time % 60);
+        let minutes = parseInt(time / 60);
+        if (minutes < 10) minutes = "0" + minutes;
+        if (seconds < 10) seconds = "0" + seconds;
         timer.innerHTML = minutes + ":" + seconds;
         progresBar.style.width = (percentageCounter - time) * percentage + "%";
         time--;
@@ -85,7 +80,6 @@
 
     function resetPomodoro() {
         timeFlag = true;
-        pauseFlag = false;
         getInput();
         time = work;
         resetBar();
