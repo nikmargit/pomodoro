@@ -18,7 +18,11 @@
 
     startBtn.addEventListener("click", function() {
         startBtn.disabled = true;
-        msg.textContent = "Work!\uD83D\uDCAA";
+        if (segments > 0 && segments % 4 === 0) {
+            msg.textContent = "Time for a longer break!";
+        } else {
+            msg.textContent = "Work!\uD83D\uDCAA";
+        }
         interval = setInterval(countdown, 1000);
     });
 
